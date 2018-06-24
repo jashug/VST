@@ -202,10 +202,10 @@ Definition link_def {F V: Type} {LF: Linker F} {LV: Linker V} (gd1 gd2: globdef 
 Inductive linkorder_def {F V: Type} {LF: Linker F} {LV: Linker V}: globdef F V -> globdef F V -> Prop :=
   | linkorder_def_fun: forall fd1 fd2,
       linkorder fd1 fd2 ->
-      linkorder_def (Gfun fd1) (Gfun fd2)
+      linkorder_def (F := F) (Gfun fd1) (Gfun fd2)
   | linkorder_def_var: forall v1 v2,
       linkorder v1 v2 ->
-      linkorder_def (Gvar v1) (Gvar v2).
+      linkorder_def (F := F) (Gvar v1) (Gvar v2).
 
 Instance Linker_def (F V: Type) {LF: Linker F} {LV: Linker V}: Linker (globdef F V) := {
   link := link_def;
