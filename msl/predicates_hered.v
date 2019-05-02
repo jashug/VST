@@ -19,6 +19,8 @@ Definition hereditary {A} (R:A->A->Prop) (p:A->Prop) :=
 (* A predicate is a hereditary pre-predicate *)
 Definition pred (A:Type) {AG:ageable A} :=
   { p:A -> Prop | hereditary age p }.
+From Coq Require ZArith.
+Constraint pred.u0 <= Coq.ZArith.Zcomplements.Zlength_aux.u0.
 
 Bind Scope pred with pred.
 

@@ -1125,7 +1125,8 @@ Proof.
       + apply JMeq_sym, (unfold_reptype_JMeq (Tarray t z a) v2).
     }
     apply array_pred_ext.
-    - apply list_func_JMeq; [apply reptype_change_composite; auto | auto].
+    - Constraint list_func_JMeq.u3 < Zlength_aux.u0.
+      refine (list_func_JMeq _ _ (@Zlength) _ _); [apply reptype_change_composite; auto | auto].
     - intros.
       rewrite (IH (Znth (i - 0) (unfold_reptype v1)) (Znth (i - 0) (unfold_reptype v2))); auto.
       * f_equal.

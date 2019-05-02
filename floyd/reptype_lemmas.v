@@ -149,6 +149,7 @@ Definition reptype_gen {cs: compspecs} : type -> (sigT (fun x => x)) :=
   (fun id a TVs => existT (fun x => x) (compact_sum_sigT_type (decay TVs)) (compact_sum_sigT_value (decay TVs))).
 
 Definition reptype {cs: compspecs} t: Type := match reptype_gen t with existT t _ => t end.
+Constraint reptype.u0 < Zlength_aux.u0.
 
 Definition default_val {cs: compspecs} t: reptype t :=
   match reptype_gen t as tv
